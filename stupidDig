@@ -1,0 +1,45 @@
+
+
+function moveDown()
+    turtle.digDown()
+    digAround()
+    turtle.down()
+end
+
+function digAround()
+    for r=0, 4 do
+        turtle.dig()
+        turtle.turnRight()
+    end
+end
+
+function refuel()
+    local fuelLevel = turtle.getFuelLevel()
+    if fuelLevel == "unlimited" then error("turtle doesn't need fuel", 0) end
+
+    local ok, err = turtle.refuel()
+    if ok then 
+        local newFuelLevel = turtle.getFuelLevel()
+    else
+        printError(err)
+    end
+end
+
+function moveUp()
+    turtle.up()
+end
+
+
+
+function main()
+    refuel()
+    for i = 0, 20 do
+        moveDown()
+    end
+    for ii = 0, 20 do
+        moveUp()
+    end
+end
+
+main()
+
