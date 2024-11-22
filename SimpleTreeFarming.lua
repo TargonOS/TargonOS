@@ -3,7 +3,7 @@ local movedY = 0
 local Distance = 5
 
 local nameLog = "minecraft:oak_log"
-local nameSapling
+local nameSapling = "minecraft:oak_sapling"
 
 function _entry()
     for i=0, Distance do
@@ -24,7 +24,9 @@ end
 function checkChest()
     local chest = peripheral.find("minecraft:chest")
     for slot, item in pairs(chest.list()) do
-        print(("%d x %s in slot %d"):format(item.count, item.name, slot))
+        if item.name == nameSapling then
+            print(("%d x %s in slot %d"):format(item.count, item.name, slot))
+        end
     end
 end
 
