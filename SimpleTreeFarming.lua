@@ -13,6 +13,7 @@ function inspectInfront()
     if success == false then
         print("a")
         return 0
+    end
     
     print(textutils.serialise(data))
 end
