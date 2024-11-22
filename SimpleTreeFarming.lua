@@ -2,6 +2,9 @@
 local movedY = 0
 local Distance = 5
 
+local nameLog = "minecraft:oak_log"
+local nameSapling
+
 function _entry()
     for i=0, Distance do
         turtle.forward()
@@ -15,7 +18,14 @@ function inspectInfront()
         return 0
     end
     
-    print(textutils.serialise(data))
+    print(textutils.serialise(data.name))
+end
+
+function checkChest()
+    local chest = peripheral.find("minecraft:chest")
+    for slot, item in pairs(chest.list()) do
+        print(("%d x %s in slot %d"):format(item.count, item.name, slot))
+    end
 end
 
 function moveDownX()
@@ -27,4 +37,4 @@ end
 function deposit()
 end
 
-inspectInfront()
+checkChest()
