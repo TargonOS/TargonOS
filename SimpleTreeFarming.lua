@@ -10,7 +10,8 @@ end
 
 function inspectInfront()
     success, data = turtle.inspect()
-    if !success then
+    if success == false then
+        print("a")
         return 0
     
     print(textutils.serialise(data))
